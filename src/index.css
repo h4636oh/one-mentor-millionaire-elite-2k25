@@ -1,13 +1,36 @@
+@font-face {
+  font-family: 'agrandir';
+  src: url('./assets/fonts/Agrandir-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'agrandir';
+  src: url('./assets/fonts/Agrandir-TextBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'agrandir';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-cod11e-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  font-family: 'agrandir';
 }

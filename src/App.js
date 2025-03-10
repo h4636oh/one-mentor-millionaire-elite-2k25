@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
+import LandingPageHome from './components/LandingPageHome';
+import Schedule from './components/Schedule';
+import InvestorTrophy from './components/InvestorTrophy';
+import EliteGuests from './components/EliteGuests';
+import ReachOut from './components/ReachOut';
+import Footer from './components/Footer';
+import sponsors from './assets/sponsors.png';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<div style={{ backgroundColor: '#010624' }}>
+			<LandingPageHome />
+			<img src={sponsors} alt="Sponsors" className="sponsors-image" />
+			<Schedule />
+			<InvestorTrophy />
+			<EliteGuests />
+			<ReachOut />
+			<Footer />
+		</div>
+	);
+};
 
 export default App;

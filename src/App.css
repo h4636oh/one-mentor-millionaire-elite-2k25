@@ -1,38 +1,917 @@
-.App {
-  text-align: center;
+@font-face {
+	font-family: 'agrandir';
+	src: url('./assets/fonts/Agrandir-Regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+	font-family: 'agrandir';
+	src: url('./assets/fonts/Agrandir-TextBold.otf') format('opentype');
+	font-weight: bold;
+	font-style: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'agrandir';
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.sponsors-image {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+	min-height: 100vh;
+	width: 100%;
+	background: linear-gradient(
+		135deg,
+		#000000,
+		#0a0a1f 30%,
+		#1a0936 70%,
+		#000000
+	);
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Center align items horizontally */
+	color: white;
+	position: relative;
+	overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Add a subtle radial glow effect */
+.container::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(
+		circle at center,
+		rgba(147, 51, 234, 0.15) 0%,
+		transparent 70%
+	);
+	pointer-events: none;
+}
+
+/* Center align text in child elements */
+.hero-section {
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center; /* Center align text */
+}
+
+.container {
+	min-height: 100vh;
+	width: 100%;
+	background: linear-gradient(
+		135deg,
+		#000000,
+		#0a0a1f 30%,
+		#1a0936 70%,
+		#000000
+	);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: white;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Add a subtle radial glow effect */
+.container::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(
+		circle at center,
+		rgba(147, 51, 234, 0.15) 0%,
+		transparent 70%
+	);
+	pointer-events: none;
+}
+
+.navbar {
+	height: 64px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 15px;
+	padding: 5px 20px;
+	background-color: #1f1f1f;
+	width: 70%;
+	border-radius: 20px;
+}
+
+.nav-right {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.nav-links {
+	display: flex; /* Use flexbox for nav links */
+	gap: 20px; /* Space between links */
+	align-items: center;
+	justify-content: center;
+}
+
+.nav-links a {
+	margin-top: 5px;
+	color: white; /* Link text color */
+	text-decoration: none; /* Remove underline from links */
+	font-size: 18px; /* Link font size */
+	text-align: center;
+}
+
+.waitlist_btn_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(
+		45deg,
+		#ff0080,
+		#00bfff,
+		#ff8c00,
+		#ff0080
+	); /* Gradient colors */
+	color: white; /* Button text color */
+	border: 0px solid transparent; /* Set border to transparent */
+	cursor: pointer; /* Pointer cursor on hover */
+	border-radius: 25px; /* Rounded corners */
+	font-size: 16px; /* Font size */
+	margin: 10px;
+}
+
+.waitlist-btn {
+	padding: 5px 10px; /* Button padding */
+	border-radius: 25px; /* Rounded corners */
+	font-size: 16px; /* Font size */
+	border: 0px solid transparent; /* Set border to transparent */
+	color: transparent; /* Make text color transparent */
+	margin: 2px;
+	background-color: #1f1f1f;
+	padding-top: 10px;
+}
+
+.gradient-text {
+	font-family: 'agrandir';
+	font-weight: bold;
+	background: linear-gradient(45deg, #ff0080, #00bfff, #ff8c00, #ff0080);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent; /* For WebKit browsers */
+}
+
+.countdown {
+	display: flex; /* Align items in a row */
+	justify-content: center; /* Center the countdown */
+	gap: 20px; /* Space between time boxes */
+	margin-top: 20px; /* Add some margin on top */
+}
+
+.time-box-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	background: linear-gradient(
+		45deg,
+		#ffffff9d 15%,
+		transparent 5%,
+		transparent 85%,
+		#ffffff9d 90%
+	);
+	border-radius: 10px;
+	width: 125px;
+}
+
+.time-box {
+	background: rgba(238, 238, 238, 0.1); /* Semi-transparent background */
+	border-radius: 10px; /* Rounded corners */
+	padding: 20px; /* Padding inside the box */
+	text-align: center; /* Center text */
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+	backdrop-filter: blur(10px); /* Blur effect for background */
+	color: white; /* Text color */
+	margin: 2px;
+	width: 100%;
+}
+
+.time-box-text {
+	background: linear-gradient(45deg, #ff0080, #00bfff, #ff8c00, #ff0080);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent; /* For WebKit browsers */
+	font-weight: 600;
+	font-size: 60px;
+}
+
+.time-box span {
+	display: block; /* Make the label a block element */
+	color: rgba(255, 255, 255, 0.7); /* Lighter color for labels */
+}
+
+p.description {
+	margin-top: 40px;
+	font-size: 28px;
+	width: 70%;
+}
+
+/* Add this to src/App.css */
+@keyframes rotate-border {
+	0% {
+		border-color: rgba(255, 255, 255, 0.5);
+		/* transform: rotate(0deg); */
+	}
+	50% {
+		border-color: rgba(255, 255, 255, 1);
+		/* transform: rotate(180deg); */
+	}
+	100% {
+		border-color: rgba(255, 255, 255, 0.5);
+		/* transform: rotate(360deg); */
+	}
+}
+
+.date-revealing {
+	margin-top: 40px;
+	font-size: 48px;
+}
+
+.join-now {
+	margin: 64px 0px;
+	padding: 29px 66px;
+	background-color: transparent; /* Transparent background */
+	border: 2px solid rgba(255, 255, 255, 0.5); /* Light border */
+	color: white; /* Text color */
+	font-size: 24px; /* Font size */
+	border-radius: 5px; /* Rounded corners */
+	font-size: 28px; /* Font size */
+	cursor: pointer; /* Pointer cursor on hover */
+	transition: background-color 0.3s, color 0.3s; /* Transition effects */
+	animation: rotate-border 2s linear infinite; /* Add animation */
+}
+
+.join-now:hover {
+	background-color: rgba(255, 255, 255, 0.1); /* Slight background on hover */
+	color: white; /* Keep text color white on hover */
+}
+
+.schedule-container {
+	color: white;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #010624;
+	gap: 20px;
+	padding: 40px 0px;
+}
+
+.schedule-card {
+	width: 100%;
+	background: linear-gradient(180deg, #7a0080, #300176);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 10px;
+	overflow: hidden;
+}
+
+.schedule-time-container {
+	margin-left: 20px;
+	font-weight: bold;
+	font-size: 24px;
+	width: 250px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.schedule-time {
+	font-size: 24px;
+	width: 100%;
+	text-align: justify;
+}
+
+.schedule-details-container {
+	font-size: 24px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.schedule-title {
+	font-size: 28px;
+	margin: 10px 0;
+}
+
+.schedule-heading {
+	margin-bottom: 40px;
+	font-size: 48px;
+}
+
+.schedule-description {
+	font-size: 16px;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.schedule-card-border {
+	width: 90%;
+	background: linear-gradient(
+		45deg,
+		#6b9bd9 0%,
+		#4b7cba 50%,
+		#a4bad7 80%,
+		#b9cae0 100%
+	);
+	border-radius: 12px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 3px;
+}
+
+.schedule-card-border:last-child {
+	margin-bottom: 20px;
+}
+
+.investor-trophy-page {
+	background: linear-gradient(
+		90deg,
+		#7a0080,
+		#300176
+	); /* Background gradient */
+	color: white; /* Text color */
+	padding: 40px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.trophy-container-border {
+	width: 100%;
+	max-width: 1200px; /* Max width for the container */
+	padding: 3px; /* Center the container */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px;
+	background: linear-gradient(
+		45deg,
+		#6b9bd9 0%,
+		#4b7cba 50%,
+		#a4bad7 80%,
+		#b9cae0 100%
+	);
+}
+
+.investor-trophy-container {
+	width: 100%;
+	padding: 40px;
+	background-color: #010624;
+	border-radius: 10px;
+	border: 2px solid #000000;
+	color: white; /* Text color */
+	border-radius: 10px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.trophy-title {
+	font-size: 36px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.trophy-content {
+	display: flex; /* Flexbox for layout */
+	align-items: center; /* Center vertically */
+}
+
+.trophy-image-container {
+	flex: 1; /* Take up 50% of the space */
+	display: flex;
+	justify-content: center; /* Center the image */
+}
+
+.trophy-image {
+	max-width: 100%; /* Responsive image */
+	height: auto; /* Maintain aspect ratio */
+}
+
+.trophy-description {
+	flex: 1; /* Take up 50% of the space */
+	padding: 20px; /* Padding around the text */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.trophy-description h2 {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.trophy-description h3 {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.trophy-description p {
+	margin-bottom: 10px; /* Space between paragraphs */
+}
+
+.elite-guests-container {
+	text-align: center;
+	padding: 40px 20px;
+	background-color: #110f0f;
+	color: white;
+}
+
+.elite-guests-container h1 {
+	font-size: 48px;
+	margin-bottom: 20px;
+}
+
+.elite-guests-container p {
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.guests-grid {
+	display: grid;
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(200px, 1fr)
+	); /* Responsive grid */
+	gap: 40px; /* Space between cards */
+}
+
+.guest-card {
+	background-color: #ffffff; /* Card background */
+	border-radius: 20px; /* Rounded corners */
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+	padding: 10px;
+	transition: transform 0.3s; /* Animation on hover */
+	background-color: #1d1a1a;
+}
+
+.guest-card:hover {
+	transform: scale(1.05); /* Scale effect on hover */
+}
+
+.guest-image {
+	width: 100%; /* Responsive image */
+	height: auto; /* Maintain aspect ratio */
+	border-radius: 10px; /* Rounded corners for image */
+}
+
+.guest-card h2 {
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+.guest-card p {
+	font-size: 16px;
+	margin-top: 10px;
+}
+
+.contact-us-container {
+	text-align: center;
+	padding: 40px;
+	background: linear-gradient(
+		90deg,
+		#7a0080,
+		#300176
+	); /* Background gradient */
+	color: white; /* Text color */
+}
+
+.contact-us-container h1 {
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+.contact-us-container p {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+
+.contact-button {
+	background-color: transparent; /* Transparent background */
+	border: 2px solid white; /* White border */
+	color: white; /* Text color */
+	padding: 10px 20px 5px 20px; /* Padding */
+	border-radius: 5px; /* Rounded corners */
+	font-size: 18px; /* Font size */
+	cursor: pointer; /* Pointer cursor on hover */
+	transition: background-color 0.3s, color 0.3s; /* Transition effects */
+}
+
+.contact-button:hover {
+	background-color: rgba(255, 255, 255, 0.1); /* Slight background on hover */
+}
+
+.footer-container {
+	background-color: #000; /* Black background */
+	color: white; /* White text */
+	padding: 40px 20px; /* Padding */
+	text-align: center; /* Center text */
+}
+
+.footer-logo {
+	display: flex; /* Flexbox for logo */
+	align-items: center; /* Center vertically */
+	justify-content: center; /* Center horizontally */
+	margin-bottom: 20px; /* Space below logo */
+}
+
+.footer-logo-image {
+	width: 50px; /* Logo width */
+	height: auto; /* Maintain aspect ratio */
+	margin-right: 10px; /* Space between logo and text */
+}
+
+.footer-links {
+	display: flex; /* Flexbox for columns */
+	justify-content: space-around; /* Space between columns */
+	margin-bottom: 20px; /* Space below links */
+}
+
+.footer-column {
+	text-align: left; /* Align text to the left */
+}
+
+.footer-column h3 {
+	margin-bottom: 10px; /* Space below headings */
+}
+
+.footer-column ul {
+	list-style: none; /* Remove bullet points */
+	padding: 0; /* Remove padding */
+}
+
+.footer-column li {
+	margin-bottom: 5px; /* Space between list items */
+}
+
+.footer-rights {
+	margin-top: 20px; /* Space above rights text */
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+	.navbar {
+		width: 95%;
+		padding: 5px 10px;
+		height: 64px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.nav-left {
+		display: flex;
+		align-items: center;
+	}
+
+	.nav-right {
+		display: flex;
+		align-items: center;
+		gap: 15px;
+	}
+
+	.nav-links {
+		position: fixed;
+		top: 80px;
+		left: -100%;
+		width: 100%;
+		height: auto;
+		background: rgba(1, 6, 36, 0.95);
+		padding: 20px;
+		transition: 0.3s ease-in-out;
+		z-index: 1000;
+	}
+
+	.nav-links.active {
+		left: 0;
+	}
+
+	.nav-links a {
+		display: block;
+		padding: 15px 0;
+		text-align: center;
+		font-size: 18px;
+	}
+
+	.waitlist_btn_container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	/* Remove margin-top from waitlist button container */
+	.waitlist_btn_container {
+		margin-top: 0;
+	}
+
+	/* Adjust waitlist button size for mobile */
+	.waitlist-btn {
+		padding: 5px 10px;
+		font-size: 14px;
+	}
+
+	/* Landing Page */
+	.title_logo {
+		width: 90%;
+		height: auto;
+	}
+
+	p.description {
+		width: 90%;
+		font-size: 18px;
+	}
+
+	.date-revealing {
+		font-size: 32px;
+	}
+
+	/* Countdown Timer */
+	.countdown {
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.time-box-container {
+		width: 45%;
+	}
+
+	.time-box-text {
+		font-size: 40px;
+	}
+
+	/* Sponsors Image */
+	.sponsors-image {
+		width: 100%;
+		height: auto;
+	}
+
+	/* Schedule Section */
+	.schedule-card {
+		flex-direction: column;
+		padding: 15px;
+	}
+
+	.schedule-time-container {
+		margin: 0;
+		width: 100%;
+		margin-bottom: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.schedule-time {
+		font-size: 24px;
+		width: 100%;
+		text-align: center;
+	}
+
+	.schedule-details-container {
+		font-size: 24px;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.schedule-title {
+		font-size: 20px;
+		text-align: center;
+		margin: 10px 0;
+	}
+
+	.schedule-description {
+		text-align: justify;
+		padding: 0 10px;
+	}
+
+	.schedule-card-border {
+		width: 95%;
+	}
+
+	.schedule-heading {
+		font-size: 36px;
+	}
+
+	.investor-trophy-page {
+		padding: 40px 0px;
+	}
+
+	/* Investor Trophy Section */
+	.trophy-container-border {
+		width: 95%;
+	}
+
+	.investor-trophy-container {
+		width: 100%;
+		padding: 20px;
+	}
+
+	.trophy-content {
+		flex-direction: column;
+	}
+
+	.trophy-image-container {
+		width: 100%;
+	}
+
+	.trophy-image {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.trophy-description {
+		width: 100%;
+		padding: 10px;
+		text-align: center;
+	}
+
+	.trophy-title {
+		font-size: 28px;
+	}
+
+	.trophy-description h2 {
+		font-size: 20px;
+	}
+
+	/* Elite Guests Section */
+	.guests-grid {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		gap: 20px;
+		padding: 10px;
+	}
+
+	.elite-guests-container h1 {
+		font-size: 36px;
+	}
+
+	/* Contact Section */
+	.contact-us-container {
+		padding: 20px;
+	}
+
+	.contact-us-container h1 {
+		font-size: 28px;
+	}
+
+	/* Footer */
+	.footer-links {
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.footer-column {
+		text-align: center;
+		width: 100%;
+	}
+
+	/* Join Now Button */
+	.join-now {
+		padding: 20px 40px;
+		font-size: 20px;
+		margin: 40px 0px;
+	}
+}
+
+/* Small phones */
+@media screen and (max-width: 480px) {
+	.time-box-container {
+		width: 40%;
+	}
+
+	.schedule-card-border {
+		width: 95%;
+	}
+
+	.trophy-container-border {
+		width: 95%;
+	}
+
+	p.description {
+		font-size: 16px;
+	}
+
+	.schedule-time {
+		font-size: 18px;
+	}
+
+	.guest-card h2 {
+		font-size: 16px;
+	}
+
+	.guest-card p {
+		font-size: 14px;
+	}
+}
+
+/* Add these new styles for the hamburger menu */
+.nav-left {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.hamburger {
+	display: none;
+	flex-direction: column;
+	gap: 6px;
+	cursor: pointer;
+	padding: 5px;
+}
+
+.hamburger span {
+	display: block;
+	width: 25px;
+	height: 3px;
+	background-color: white;
+	transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+	.hamburger {
+		display: flex;
+	}
+
+	.nav-links {
+		position: fixed;
+		top: 80px;
+		left: -100%;
+		width: 100%;
+		height: auto;
+		background: rgba(1, 6, 36, 0.95);
+		padding: 20px;
+		transition: 0.3s ease-in-out;
+		z-index: 1000;
+	}
+
+	.nav-links.active {
+		left: 0;
+	}
+
+	.nav-links a {
+		display: block;
+		padding: 15px 0;
+		text-align: center;
+		font-size: 18px;
+	}
+
+	.waitlist_btn_container {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin-top: 10px;
+	}
+
+	/* Hamburger animation when menu is open */
+	.hamburger.active span:nth-child(1) {
+		transform: rotate(45deg) translate(6px, 6px);
+	}
+
+	.hamburger.active span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.hamburger.active span:nth-child(3) {
+		transform: rotate(-45deg) translate(7px, -7px);
+	}
+
+	/* Ensure the navbar stays on top */
+	.navbar {
+		position: relative;
+		z-index: 1001;
+	}
 }
