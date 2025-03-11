@@ -1,5 +1,5 @@
 .ttmm-registration-container {
-    background: linear-gradient(to bottom, #1a1a1a, #2d1b3a);
+    background: linear-gradient(to bottom, #2d1b3a, #1a1a1a);
     color: white;
     display: flex;
     justify-content: center;
@@ -35,15 +35,6 @@
     max-width: 800px;
     margin: 20px auto;
     color: rgba(255, 255, 255, 0.8);
-}
-
-.registration-form-container {
-    max-width: 600px;
-    margin: 0 auto 60px;
-    /* padding: 40px; */
-    /* background: rgba(93, 47, 122, 0.9); */
-    /* border-radius: 15px; */
-    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); */
 }
 
 @media (max-width: 768px) {
