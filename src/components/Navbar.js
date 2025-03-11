@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/Navbar.css'
 import oneMentorLogo from '../assets/one_mentor_logo.png';
 
 const Navbar = () => {

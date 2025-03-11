@@ -1,0 +1,116 @@
+.investor-trophy-page {
+    background: linear-gradient(90deg, #7a0080, #300176);
+    color: white;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.trophy-container-border {
+    width: 100%;
+    max-width: 1200px;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #6b9bd9 0%, #4b7cba 50%, #a4bad7 80%, #b9cae0 100%);
+}
+
+.investor-trophy-container {
+    width: 100%;
+    padding: 40px;
+    background-color: #010624;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.trophy-title {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.trophy-content {
+    display: flex;
+    align-items: center;
+}
+
+.trophy-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.trophy-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.trophy-description {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.trophy-description h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.trophy-description h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.trophy-description p {
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .investor-trophy-page {
+        padding: 40px 0px;
+    }
+
+    .trophy-container-border {
+        width: 95%;
+    }
+
+    .investor-trophy-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .trophy-content {
+        flex-direction: column;
+    }
+
+    .trophy-image-container {
+        width: 100%;
+    }
+
+    .trophy-description {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .trophy-title {
+        font-size: 28px;
+    }
+
+    .trophy-description h2 {
+        font-size: 20px;
+    }
+} 

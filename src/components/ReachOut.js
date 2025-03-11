@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../styles/ReachOut.css';
 
 const ReachOut = () => {
 	return (

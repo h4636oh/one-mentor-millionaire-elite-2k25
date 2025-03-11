@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../styles/Schedule.css';
 const scheduleData = [
 	{
 		time: '5:00 - 6:15 PM',

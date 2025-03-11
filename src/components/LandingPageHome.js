@@ -1,7 +1,8 @@
-import Navbar from './Navbar';
+import React from 'react';
 import CountdownTimer from './CountdownTimer';
+import Navbar from './Navbar';
 import landPageLogo from '../assets/land_page_logo.png';
-import '../App.css';
+import '../styles/LandingPageHome.css';
 
 const LandingPageHome = () => {
 	return (

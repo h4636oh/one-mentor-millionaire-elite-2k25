@@ -1,158 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import galaTicket from '../assets/gala_ticket.png'; // Make sure to add your ticket image
+import TTMMRegistrationWidget from './TTMMRegistrationWidget';
 import '../styles/TTMMRegistration.css';
 
 const TTMMRegistration = () => {
-    const [formData, setFormData] = useState({
-        startupName: '',
-        stage: '',
-        category: '',
-        previousFunding: '',
-        valuation: '',
-        pitchDeck: ''
-    });
-
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setSubmitStatus({ success: false, message: '' });
-
-        try {
-            const response = await fetch('YOUR_API_ENDPOINT_HERE', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                setSubmitStatus({
-                    success: true,
-                    message: 'Registration successful!'
-                });
-                // Clear form after successful submission
-                setFormData({
-                    startupName: '',
-                    stage: '',
-                    category: '',
-                    previousFunding: '',
-                    valuation: '',
-                    pitchDeck: ''
-                });
-            } else {
-                throw new Error(data.message || 'Registration failed');
-            }
-        } catch (error) {
-            setSubmitStatus({
-                success: false,
-                message: error.message || 'Something went wrong. Please try again.'
-            });
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
     return (
-        <div className="ttmm-registration">
-            <h1>TTMM</h1>
-            <h2>REGISTER YOUR STARTUP FOR TTMM</h2>
+        <div className="ttmm-registration-container">
+            <Navbar />
             
-            {submitStatus.message && (
-                <div className={`status-message ${submitStatus.success ? 'success' : 'error'}`}>
-                    {submitStatus.message}
-                </div>
-            )}
-            
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Startup Name</label>
-                    <input
-                        type="text"
-                        name="startupName"
-                        placeholder="Name"
-                        value={formData.startupName}
-                        onChange={handleChange}
-                    />
+            <div className="ttmm-content">
+                <div className="ttmm-header">
+                    <h1>Don't Miss Out!</h1>
+                    <h2>Secure Your Spot Now!</h2>
+                    <p>Join us for Millionaire Elite and be part of an unforgettable experience filled with insights, networking, and innovation.</p>
                 </div>
 
-                <div className="form-group">
-                    <label>Stage</label>
-                    <input
-                        type="text"
-                        name="stage"
-                        placeholder="Idea, MVP, Growth, Established"
-                        value={formData.stage}
-                        onChange={handleChange}
-                    />
+                <div className="registration-form-container">
+                    <TTMMRegistrationWidget />
                 </div>
 
-                <div className="form-group">
-                    <label>Category</label>
-                    <input
-                        type="text"
-                        name="category"
-                        placeholder="Tech, EdTech, FinTech, Healthcare, etc."
-                        value={formData.category}
-                        onChange={handleChange}
+                <div className="gala-ticket-section">
+                    <h2>Get your ticket for Gala Night</h2>
+                    <img 
+                        src={galaTicket} 
+                        alt="Millionaire Elite 2025 Gala Ticket" 
+                        className="gala-ticket-image"
                     />
                 </div>
+            </div>
 
-                <div className="form-group">
-                    <label>Previous Funding Rounds</label>
-                    <input
-                        type="text"
-                        name="previousFunding"
-                        placeholder="If any"
-                        value={formData.previousFunding}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label>Valuation</label>
-                    <input
-                        type="text"
-                        name="valuation"
-                        placeholder="If any"
-                        value={formData.valuation}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label>Pitch Deck (optional)</label>
-                    <input
-                        type="text"
-                        name="pitchDeck"
-                        placeholder="If any"
-                        value={formData.pitchDeck}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <button 
-                    type="submit" 
-                    className="register-btn" 
-                    disabled={isSubmitting}
-                >
-                    {isSubmitting ? 'Registering...' : 'Register'}
-                </button>
-            </form>
+            <Footer />
         </div>
     );
 };
 
-export default TTMMRegistration; 
+export default TTMMRegistration;

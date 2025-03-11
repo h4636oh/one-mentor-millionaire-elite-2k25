@@ -1,5 +1,7 @@
 import React from 'react';
 import trophyImage from '../assets/investor_trophy.png';
+import '../styles/InvestorTrophy.css';
+
 const InvestorTrophy = () => {
 	return (
 		<div className="investor-trophy-page">

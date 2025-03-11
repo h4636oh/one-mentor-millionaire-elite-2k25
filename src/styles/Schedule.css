@@ -1,0 +1,123 @@
+.schedule-container {
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #010624;
+    gap: 20px;
+    padding: 40px 0px;
+}
+
+.schedule-card {
+    width: 100%;
+    background: linear-gradient(180deg, #7a0080, #300176);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.schedule-time-container {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 24px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedule-time {
+    font-size: 24px;
+    width: 100%;
+    text-align: justify;
+}
+
+.schedule-details-container {
+    font-size: 24px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.schedule-title {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.schedule-heading {
+    margin-bottom: 40px;
+    font-size: 48px;
+}
+
+.schedule-description {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.schedule-card-border {
+    width: 90%;
+    background: linear-gradient(45deg, #6b9bd9 0%, #4b7cba 50%, #a4bad7 80%, #b9cae0 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+}
+
+.schedule-card-border:last-child {
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .schedule-card {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .schedule-time-container {
+        margin: 0;
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .schedule-time {
+        font-size: 24px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .schedule-details-container {
+        font-size: 24px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .schedule-title {
+        font-size: 20px;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .schedule-description {
+        text-align: justify;
+        padding: 0 10px;
+    }
+
+    .schedule-card-border {
+        width: 95%;
+    }
+
+    .schedule-heading {
+        font-size: 36px;
+    }
+} 

@@ -1,0 +1,41 @@
+.contact-us-container {
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(90deg, #7a0080, #300176);
+    color: white;
+}
+
+.contact-us-container h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact-us-container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.contact-button {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px 5px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+    .contact-us-container {
+        padding: 20px;
+    }
+
+    .contact-us-container h1 {
+        font-size: 28px;
+    }
+} 
