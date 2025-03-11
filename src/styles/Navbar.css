@@ -128,12 +128,10 @@
         align-items: center;
     }
 
-    .waitlist_btn_container {
-        margin-top: 0;
-    }
 
     .waitlist_btn_container {
         margin-top: 10px;
+        margin-right: -5px;
     }
 
     .waitlist-btn {
@@ -143,6 +141,7 @@
 
     .hamburger {
         display: flex;
+        margin-right: 10px;
     }
 
     .hamburger.active span:nth-child(1) {

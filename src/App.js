@@ -8,8 +8,8 @@ import ReachOut from './components/ReachOut';
 import Footer from './components/Footer';
 import sponsors from './assets/sponsors.png';
 import TTMMRegistration from './components/TTMMRegistration';
-import './styles/Common.css';
 import TTMM from './components/TTMM';
+import './styles/Common.css';
 
 const App = () => {
 	return (
