@@ -1,0 +1,96 @@
+.ttmm-container {
+    background: linear-gradient(135deg, #000000, #0a0a1f 30%, #1a0936 70%, #000000);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+}
+
+.ttmm-content {
+    width: 90%;
+    margin: 60px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    min-height: 79vh;
+}
+
+.ttmm-logo {
+    font-size: 80px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #9DE8EE 20%, #FA7C0B 60%, #9F8CED 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.ttmm-content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.ttmm-main-text, .ttmm-secondary-text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 auto;
+}
+
+.register-button {
+    margin: 64px 0px;
+    padding: 29px 66px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 28px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    animation: rotate-border 2s linear infinite;
+}
+
+.register-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+@keyframes rotate-border {
+    0% {
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        border-color: rgba(255, 255, 255, 1);
+    }
+    100% {
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+}
+
+@media (max-width: 768px) {
+    .ttmm-content {
+        margin: 40px auto;
+        gap: 20px;
+    }
+
+    .ttmm-logo {
+        font-size: 60px;
+    }
+
+    .ttmm-content h1 {
+        font-size: 28px;
+    }
+
+    .ttmm-main-text, .ttmm-secondary-text {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .register-button {
+        padding: 20px 40px;
+        font-size: 20px;
+        margin: 40px 0px;
+    }
+}

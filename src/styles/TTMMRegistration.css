@@ -46,25 +46,6 @@
     /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); */
 }
 
-.gala-ticket-section {
-    text-align: center;
-    margin-top: 60px;
-    padding: 20px;
-}
-
-.gala-ticket-section h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-}
-
-.gala-ticket-image {
-    max-width: 600px;
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
 @media (max-width: 768px) {
     .ttmm-header h1 {
         font-size: 2.5rem;
@@ -77,9 +58,5 @@
     .registration-form-container {
         padding: 20px;
         margin: 0 15px 40px;
-    }
-
-    .gala-ticket-section h2 {
-        font-size: 1.6rem;
     }
 }

@@ -9,12 +9,14 @@ import Footer from './components/Footer';
 import sponsors from './assets/sponsors.png';
 import TTMMRegistration from './components/TTMMRegistration';
 import './styles/common.css';
+import TTMM from './components/TTMM';
 
 const App = () => {
 	return (
 		<Router>
 			<Routes>
 				<Route path="/register" element={<TTMMRegistration />} />
+				<Route path="/ttmm" element={<TTMM />} />
 				<Route path="/" element={
 					<div style={{ backgroundColor: '#010624' }}>
 						<LandingPageHome />

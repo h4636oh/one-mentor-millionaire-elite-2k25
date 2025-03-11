@@ -1,0 +1,75 @@
+.elite-guests-container {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #110f0f;
+    color: white;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.elite-guests-container h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.elite-guests-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.guests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.guest-card {
+    background-color: #1d1a1a;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: transform 0.3s;
+}
+
+.guest-card:hover {
+    transform: scale(1.05);
+}
+
+.guest-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.guest-card h2 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.guest-card p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .guests-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .elite-guests-container h1 {
+        font-size: 36px;
+    }
+
+    .guest-card h2 {
+        font-size: 16px;
+    }
+
+    .guest-card p {
+        font-size: 14px;
+    }
+}
