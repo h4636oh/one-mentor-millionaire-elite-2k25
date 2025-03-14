@@ -18,10 +18,10 @@ const TTMMRegistrationWidget = () => {
 	});
 
 	const handleChange = (e) => {
-		const { name, value } = e.target;
+		const { name, value, type, files } = e.target;
 		setFormData((prevState) => ({
 			...prevState,
-			[name]: value,
+			[name]: type === 'file' ? files[0] : value,
 		}));
 	};
 
@@ -141,12 +141,11 @@ const TTMMRegistrationWidget = () => {
 				</div>
 
 				<div className="form-group">
-					<label>Pitch Deck (optional)</label>
+					<label>Pitch Deck (PDF only)</label>
 					<input
-						type="text"
+						type="file"
 						name="pitchDeck"
-						placeholder="If any"
-						value={formData.pitchDeck}
+						accept=".pdf"
 						onChange={handleChange}
 					/>
 				</div>
