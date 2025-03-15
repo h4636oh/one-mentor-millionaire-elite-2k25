@@ -34,16 +34,13 @@ const AuthForm = () => {
 
 		try {
 			// Replace with your actual API endpoint
-			const response = await fetch(
-				`/api/${isLogin ? 'login' : 'signup'}`,
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(formData),
-				}
-			);
+			const response = await fetch(`http://localhost:8000/api/${isLogin ? 'login' : 'signup'}`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(formData),
+			});
 
 			const data = await response.json();
 

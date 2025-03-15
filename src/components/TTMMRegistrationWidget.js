@@ -31,12 +31,14 @@ const TTMMRegistrationWidget = () => {
 		setSubmitStatus({ success: false, message: '' });
 
 		try {
-			const response = await fetch('YOUR_API_ENDPOINT_HERE', {
+			const formDataToSend = new FormData();
+			for (const key in formData) {
+				formDataToSend.append(key, formData[key]);
+			}
+
+			const response = await fetch('http://localhost:8000/api/register-startup', {
 				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(formData),
+				body: formDataToSend,
 			});
 
 			const data = await response.json();
@@ -56,13 +58,12 @@ const TTMMRegistrationWidget = () => {
 					pitchDeck: '',
 				});
 			} else {
-				throw new Error(data.message || 'Registration failed');
+				throw new Error(data.detail || 'Registration failed');
 			}
 		} catch (error) {
 			setSubmitStatus({
 				success: false,
-				message:
-					error.message || 'Something went wrong. Please try again.',
+				message: error.message || 'Something went wrong. Please try again.',
 			});
 		} finally {
 			setIsSubmitting(false);
