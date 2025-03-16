@@ -30,23 +30,49 @@ const TTMMRegistrationWidget = () => {
 		setIsSubmitting(true);
 		setSubmitStatus({ success: false, message: '' });
 
+		// Get token from localStorage
+		const token = localStorage.getItem('token');
+		if (!token) {
+			setSubmitStatus({
+				success: false,
+				message: 'Please login first to register your startup'
+			});
+			setIsSubmitting(false);
+			return;
+		}
+
+		// Validate PDF file type
+		if (formData.pitchDeck && formData.pitchDeck.type !== 'application/pdf') {
+			setSubmitStatus({
+				success: false,
+				message: 'Please upload only PDF files for pitch deck'
+			});
+			setIsSubmitting(false);
+			return;
+		}
+
 		try {
 			const formDataToSend = new FormData();
-			for (const key in formData) {
-				formDataToSend.append(key, formData[key]);
-			}
+			formDataToSend.append('userId', token);
+			formDataToSend.append('startupName', formData.startupName);
+			formDataToSend.append('stage', formData.stage);
+			formDataToSend.append('category', formData.category);
+			formDataToSend.append('previousFundingRounds', formData.previousFunding);
+			formDataToSend.append('valuation', formData.valuation);
+			formDataToSend.append('pitchDeck', formData.pitchDeck);
 
-			const response = await fetch('http://localhost:8000/api/register-startup', {
+			const response = await fetch('https://millionaireelite25-backend.vercel.app/ttmm/register', {
 				method: 'POST',
 				body: formDataToSend,
+				headers: {
+					'Authorization': `Bearer ${token}` // Also adding token in headers if needed
+				}
 			});
 
-			const data = await response.json();
-
-			if (response.ok) {
+			if (response.status === 201) {
 				setSubmitStatus({
 					success: true,
-					message: 'Registration successful!',
+					message: 'Successfully joined the waitlist!',
 				});
 				// Clear form after successful submission
 				setFormData({
@@ -57,8 +83,11 @@ const TTMMRegistrationWidget = () => {
 					valuation: '',
 					pitchDeck: '',
 				});
+			} else if (response.status === 500) {
+				throw new Error('Server error occurred');
 			} else {
-				throw new Error(data.detail || 'Registration failed');
+				const data = await response.json();
+				throw new Error(data.message || 'Registration failed');
 			}
 		} catch (error) {
 			setSubmitStatus({

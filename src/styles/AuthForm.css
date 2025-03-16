@@ -125,3 +125,30 @@
 		font-size: 14px;
 	}
 }
+
+.role-toggle {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin: 20px 0;
+}
+
+.role-toggle button {
+	padding: 10px 20px;
+	border: 1px solid #ccc;
+	background: transparent;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 15px;
+}
+
+.role-toggle button.active {
+	background: #7b0180;
+	color: white;
+	border-color: #7b0180;
+}
+
+.role-toggle button:hover:not(.active) {
+	background: #f0f0f0;
+}
