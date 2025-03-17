@@ -30,9 +30,11 @@ const TTMMRegistrationWidget = () => {
 		setIsSubmitting(true);
 		setSubmitStatus({ success: false, message: '' });
 
-		// Get token from localStorage
+		// Get token and userId from localStorage
 		const token = localStorage.getItem('token');
-		if (!token) {
+		const userId = localStorage.getItem('userId');
+
+		if (!token || !userId) {
 			setSubmitStatus({
 				success: false,
 				message: 'Please login first to register your startup'
@@ -53,7 +55,7 @@ const TTMMRegistrationWidget = () => {
 
 		try {
 			const formDataToSend = new FormData();
-			formDataToSend.append('userId', token);
+			formDataToSend.append('userId', userId);  // Using userId instead of token
 			formDataToSend.append('startupName', formData.startupName);
 			formDataToSend.append('stage', formData.stage);
 			formDataToSend.append('category', formData.category);
@@ -65,7 +67,7 @@ const TTMMRegistrationWidget = () => {
 				method: 'POST',
 				body: formDataToSend,
 				headers: {
-					'Authorization': `Bearer ${token}` // Also adding token in headers if needed
+					'Authorization': `Bearer ${token}`
 				}
 			});
 

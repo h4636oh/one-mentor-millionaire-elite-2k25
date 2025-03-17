@@ -85,11 +85,15 @@ const AuthForm = () => {
 
 			const data = await response.json();
 
-			if (response.ok) {
+			if (data.success) {
 				if (isLogin) {
-					// Store token in localStorage for future use
+					// Store token, userId and user data for login
 					localStorage.setItem('token', data.token);
-					// Store user data if needed
+					localStorage.setItem('userId', data.userId);
+					localStorage.setItem('user', JSON.stringify(data.user));
+				} else {
+					// Store userId and user data for signup
+					localStorage.setItem('userId', data.userId);
 					localStorage.setItem('user', JSON.stringify(data.user));
 				}
 				
