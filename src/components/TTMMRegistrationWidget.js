@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/TTMMRegistrationWidget.css';
+import { getItemWithExpiry } from '../utils/localStorage';
 
 const TTMMRegistrationWidget = () => {
 	const [formData, setFormData] = useState({
@@ -30,9 +31,9 @@ const TTMMRegistrationWidget = () => {
 		setIsSubmitting(true);
 		setSubmitStatus({ success: false, message: '' });
 
-		// Get token and userId from localStorage
-		const token = localStorage.getItem('token');
-		const userId = localStorage.getItem('userId');
+		// Get token and userId with expiry check
+		const token = getItemWithExpiry('token');
+		const userId = getItemWithExpiry('userId');
 
 		if (!token || !userId) {
 			setSubmitStatus({

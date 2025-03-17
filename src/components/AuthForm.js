@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/AuthForm.css';
+import { setItemWithExpiry } from '../utils/localStorage';
 
 const AuthForm = () => {
 	const [isLogin, setIsLogin] = useState(true);
@@ -96,15 +97,14 @@ const AuthForm = () => {
 
 			if (data.success) {
 				if (isLogin) {
-					// Store token, userId and user data for login
-					localStorage.setItem('token', data.token);
-					console.log(data.userId); //debug code
-					localStorage.setItem('userId', data.userId);
-					localStorage.setItem('user', JSON.stringify(data.user));
+					// Store token, userId and user data for login with 6-day expiry
+					setItemWithExpiry('token', data.token);
+					setItemWithExpiry('userId', data.userId);
+					setItemWithExpiry('user', data.user);
 				} else {
-					// Store userId and user data for signup
-					localStorage.setItem('userId', data.userId);
-					localStorage.setItem('user', JSON.stringify(data.user));
+					// Store userId and user data for signup with 6-day expiry
+					setItemWithExpiry('userId', data.userId);
+					setItemWithExpiry('user', data.user);
 				}
 
 				setStatus({
@@ -113,6 +113,8 @@ const AuthForm = () => {
 						: 'Registration successful!',
 					type: 'success',
 				});
+
+				window.location.href = '/';
 			} else {
 				throw new Error(data.message || 'Authentication failed');
 			}
