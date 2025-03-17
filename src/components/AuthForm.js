@@ -16,20 +16,20 @@ const AuthForm = () => {
 		education: {
 			degree: '',
 			institution: '',
-			yearOfGraduation: ''
+			yearOfGraduation: '',
 		},
 		// Work Experience fields
 		workExperience: {
 			company: '',
 			jobTitle: '',
-			yearsOfExperience: ''
+			yearsOfExperience: '',
 		},
 		// Startup Details
 		startupDetails: {
 			startupName: '',
 			industry: '',
-			fundingStage: ''
-		}
+			fundingStage: '',
+		},
 	});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [status, setStatus] = useState({ message: '', type: '' });
@@ -43,13 +43,13 @@ const AuthForm = () => {
 				...prev,
 				[parent]: {
 					...prev[parent],
-					[child]: value
-				}
+					[child]: value,
+				},
 			}));
 		} else {
 			setFormData((prev) => ({
 				...prev,
-				[name]: value
+				[name]: value,
 			}));
 		}
 	};
@@ -70,18 +70,27 @@ const AuthForm = () => {
 		const submissionData = {
 			...formData,
 			education: formData.role === 'student' ? formData.education : null,
-			workExperience: formData.role === 'professional' ? formData.workExperience : null,
-			startupDetails: formData.role === 'startup' ? formData.startupDetails : null
+			workExperience:
+				formData.role === 'professional'
+					? formData.workExperience
+					: null,
+			startupDetails:
+				formData.role === 'startup' ? formData.startupDetails : null,
 		};
 
 		try {
-			const response = await fetch(`https://millionaireelite25-backend.vercel.app/auth/${isLogin ? 'login' : 'register'}`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(submissionData),
-			});
+			const response = await fetch(
+				`https://millionaireelite25-backend.vercel.app/auth/${
+					isLogin ? 'login' : 'register'
+				}`,
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(submissionData),
+				}
+			);
 
 			const data = await response.json();
 
@@ -89,6 +98,7 @@ const AuthForm = () => {
 				if (isLogin) {
 					// Store token, userId and user data for login
 					localStorage.setItem('token', data.token);
+					console.log(data.userId); //debug code
 					localStorage.setItem('userId', data.userId);
 					localStorage.setItem('user', JSON.stringify(data.user));
 				} else {
@@ -96,15 +106,13 @@ const AuthForm = () => {
 					localStorage.setItem('userId', data.userId);
 					localStorage.setItem('user', JSON.stringify(data.user));
 				}
-				
-				setStatus({ 
-					message: isLogin ? 'Login successful!' : 'Registration successful!', 
-					type: 'success' 
+
+				setStatus({
+					message: isLogin
+						? 'Login successful!'
+						: 'Registration successful!',
+					type: 'success',
 				});
-				
-				// Redirect or handle successful auth
-				// You might want to use React Router or a callback prop here
-				window.location.href = '/'; // Or your desired redirect path
 			} else {
 				throw new Error(data.message || 'Authentication failed');
 			}
@@ -193,22 +201,55 @@ const AuthForm = () => {
 							<div className="role-toggle">
 								<button
 									type="button"
-									className={formData.role === 'student' ? 'active' : ''}
-									onClick={() => handleChange({ target: { name: 'role', value: 'student' } })}
+									className={
+										formData.role === 'student'
+											? 'active'
+											: ''
+									}
+									onClick={() =>
+										handleChange({
+											target: {
+												name: 'role',
+												value: 'student',
+											},
+										})
+									}
 								>
 									Student
 								</button>
 								<button
 									type="button"
-									className={formData.role === 'professional' ? 'active' : ''}
-									onClick={() => handleChange({ target: { name: 'role', value: 'professional' } })}
+									className={
+										formData.role === 'professional'
+											? 'active'
+											: ''
+									}
+									onClick={() =>
+										handleChange({
+											target: {
+												name: 'role',
+												value: 'professional',
+											},
+										})
+									}
 								>
 									Professional
 								</button>
 								<button
 									type="button"
-									className={formData.role === 'startup' ? 'active' : ''}
-									onClick={() => handleChange({ target: { name: 'role', value: 'startup' } })}
+									className={
+										formData.role === 'startup'
+											? 'active'
+											: ''
+									}
+									onClick={() =>
+										handleChange({
+											target: {
+												name: 'role',
+												value: 'startup',
+											},
+										})
+									}
 								>
 									Startup
 								</button>
@@ -232,7 +273,9 @@ const AuthForm = () => {
 										<input
 											type="text"
 											name="education.institution"
-											value={formData.education.institution}
+											value={
+												formData.education.institution
+											}
 											onChange={handleChange}
 											placeholder="Enter your institution"
 											required
@@ -243,7 +286,10 @@ const AuthForm = () => {
 										<input
 											type="number"
 											name="education.yearOfGraduation"
-											value={formData.education.yearOfGraduation}
+											value={
+												formData.education
+													.yearOfGraduation
+											}
 											onChange={handleChange}
 											placeholder="Enter graduation year"
 											required
@@ -259,7 +305,9 @@ const AuthForm = () => {
 										<input
 											type="text"
 											name="workExperience.company"
-											value={formData.workExperience.company}
+											value={
+												formData.workExperience.company
+											}
 											onChange={handleChange}
 											placeholder="Enter company name"
 											required
@@ -270,7 +318,9 @@ const AuthForm = () => {
 										<input
 											type="text"
 											name="workExperience.jobTitle"
-											value={formData.workExperience.jobTitle}
+											value={
+												formData.workExperience.jobTitle
+											}
 											onChange={handleChange}
 											placeholder="Enter job title"
 											required
@@ -281,7 +331,10 @@ const AuthForm = () => {
 										<input
 											type="number"
 											name="workExperience.yearsOfExperience"
-											value={formData.workExperience.yearsOfExperience}
+											value={
+												formData.workExperience
+													.yearsOfExperience
+											}
 											onChange={handleChange}
 											placeholder="Enter years of experience"
 											required
@@ -297,7 +350,10 @@ const AuthForm = () => {
 										<input
 											type="text"
 											name="startupDetails.startupName"
-											value={formData.startupDetails.startupName}
+											value={
+												formData.startupDetails
+													.startupName
+											}
 											onChange={handleChange}
 											placeholder="Enter startup name"
 											required
@@ -308,7 +364,9 @@ const AuthForm = () => {
 										<input
 											type="text"
 											name="startupDetails.industry"
-											value={formData.startupDetails.industry}
+											value={
+												formData.startupDetails.industry
+											}
 											onChange={handleChange}
 											placeholder="Enter industry"
 											required
@@ -319,7 +377,10 @@ const AuthForm = () => {
 										<input
 											type="text"
 											name="startupDetails.fundingStage"
-											value={formData.startupDetails.fundingStage}
+											value={
+												formData.startupDetails
+													.fundingStage
+											}
 											onChange={handleChange}
 											placeholder="Enter funding stage"
 											required
@@ -389,7 +450,7 @@ export default AuthForm;
 
 export const fetchWithAuth = async (url, options = {}) => {
 	const token = localStorage.getItem('token');
-	
+
 	const headers = {
 		'Content-Type': 'application/json',
 		...options.headers,
