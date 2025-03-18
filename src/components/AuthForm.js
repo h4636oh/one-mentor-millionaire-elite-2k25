@@ -114,7 +114,11 @@ const AuthForm = () => {
 					type: 'success',
 				});
 
-				window.location.href = '/';
+				if (isLogin) {
+					window.location.href = '/dashboard';
+				} else {
+					setIsLogin(true);
+				}
 			} else {
 				throw new Error(data.message || 'Authentication failed');
 			}
