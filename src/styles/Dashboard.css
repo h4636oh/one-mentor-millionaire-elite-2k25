@@ -1,5 +1,4 @@
 .dashboard-container {
-	/* max-width: 800px; */
 	width: 100vw;
 	margin: 0 auto;
 	padding: 20px 0px;
@@ -13,6 +12,7 @@
 .dashboard-container h1 {
 	color: white;
 	margin-bottom: -20px;
+	font-size: 32px;
 }
 
 .profile-form {
@@ -43,6 +43,9 @@
 	border: 3px solid #fff;
 }
 
+.profile-pic-container img {
+	padding: 5px 5px;
+}
 .profile-pic-input {
 	display: none;
 }
@@ -147,4 +150,34 @@ select {
 select:disabled {
 	background-color: #e9ecef;
 	cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+	.dashboard-container .form-section {
+		width: 100%;
+	}
+
+	.dashboard-container .form-group {
+		margin-bottom: 10px;
+	}
+
+	.dashboard-container .form-group label {
+		font-size: 14px;
+	}
+
+	.dashboard-container .form-group input {
+		padding: 6px;
+	}
+
+	.save-button {
+		padding: 8px;
+	}
+
+	.status-message {
+		font-size: 14px;
+	}
+
+	.toggle-password-button {
+		padding: 6px 12px;
+	}
 }

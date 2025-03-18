@@ -148,16 +148,29 @@ const Dashboard = () => {
 			return;
 		}
 
-		const formDataToSend = new FormData();
-		Object.keys(formData).forEach((key) => {
-			if (key === 'profilePic' && formData[key]) {
-				formDataToSend.append('profilePic', formData[key]);
-			} else if (typeof formData[key] === 'object') {
-				formDataToSend.append(key, JSON.stringify(formData[key]));
-			} else {
-				formDataToSend.append(key, formData[key]);
-			}
-		});
+		// Create a data object to send
+		let dataToSend = {
+			firstName: formData.firstName,
+			lastName: formData.lastName,
+			age: formData.age,
+			email: formData.email,
+			phone: formData.phone,
+			role: formData.role,
+		};
+
+		// Add password fields if changed
+		if (showPasswordFields) {
+			dataToSend.password = formData.newPassword;
+		}
+
+		// Add role-specific data
+		if (formData.role === 'student') {
+			dataToSend.education = formData.education;
+		} else if (formData.role === 'professional') {
+			dataToSend.workExperience = formData.workExperience;
+		} else if (formData.role === 'startup') {
+			dataToSend.startupDetails = formData.startupDetails;
+		}
 
 		try {
 			const response = await fetch(
@@ -166,8 +179,9 @@ const Dashboard = () => {
 					method: 'PATCH',
 					headers: {
 						Authorization: `Bearer ${token}`,
+						'Content-Type': 'application/json',
 					},
-					body: formDataToSend,
+					body: JSON.stringify(dataToSend),
 				}
 			);
 
