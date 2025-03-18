@@ -1,12 +1,31 @@
 .dashboard-container {
-	max-width: 800px;
+	/* max-width: 800px; */
+	width: 100vw;
 	margin: 0 auto;
-	padding: 20px;
+	padding: 20px 0px;
+	background: linear-gradient(135deg, #7b0180 0%, #2e0075 100%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.dashboard-container h1 {
+	color: white;
+	margin-bottom: -20px;
+}
+
+.profile-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .profile-header {
 	text-align: center;
 	margin-bottom: 40px;
+	max-width: 800px;
 }
 
 .profile-pic-container {
@@ -28,25 +47,12 @@
 	display: none;
 }
 
-.edit-button {
-	padding: 8px 20px;
-	background-color: #007bff;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color 0.3s;
-}
-
-.edit-button:hover {
-	background-color: #0056b3;
-}
-
 .dashboard-container .form-section {
 	background-color: #f8f9fa;
 	padding: 20px;
 	border-radius: 8px;
 	margin-bottom: 20px;
+	width: 800px;
 }
 
 .dashboard-container .form-section h2 {
@@ -85,8 +91,8 @@
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-	margin-top: 20px;
 	transition: background-color 0.3s;
+	margin: 0px;
 }
 
 .save-button:hover {
@@ -98,6 +104,8 @@
 	margin-bottom: 20px;
 	border-radius: 4px;
 	text-align: center;
+	width: 100%;
+	max-width: 800px;
 }
 
 .status-message.success {
