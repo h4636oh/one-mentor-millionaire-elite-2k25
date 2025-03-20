@@ -11,6 +11,7 @@ import TTMMRegistration from './components/TTMMRegistration';
 import TTMM from './components/TTMM';
 import AuthForm from './components/AuthForm';
 import Dashboard from './components/Dashboard';
+import GalaNight from './components/GalaNight';
 import './styles/Common.css';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
 				<Route path="/ttmm" element={<TTMM />} />
 				<Route path="/login" element={<AuthForm />} />
 				<Route path="/dashboard" element={<Dashboard />} />
+				<Route path="/galanight" element={<GalaNight />} />
 				<Route path="/" element={
 					<div style={{ backgroundColor: '#010624' }}>
 						<LandingPageHome />

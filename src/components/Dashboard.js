@@ -3,7 +3,7 @@ import { getItemWithExpiry, setItemWithExpiry } from '../utils/localStorage';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {
-	const profilePicInput = useRef(null);
+	const profilePhotoInput = useRef(null);
 	const [user, setUser] = useState(null);
 	const [status, setStatus] = useState({ message: '', type: '' });
 	const [showPasswordFields, setShowPasswordFields] = useState(false);
@@ -15,7 +15,7 @@ const Dashboard = () => {
 		email: '',
 		phone: '',
 		role: 'student',
-		profilePic: null,
+		profilePhoto: null,
 		currentPassword: '',
 		newPassword: '',
 		confirmNewPassword: '',
@@ -47,7 +47,7 @@ const Dashboard = () => {
 				email: userData.email || '',
 				phone: userData.phone || '',
 				role: userData.role || 'student',
-				profilePic: null,
+				profilePhoto: null,
 				currentPassword: '',
 				newPassword: '',
 				confirmNewPassword: '',
@@ -148,29 +148,17 @@ const Dashboard = () => {
 			return;
 		}
 
-		// Create a data object to send
-		let dataToSend = {
-			firstName: formData.firstName,
-			lastName: formData.lastName,
-			age: formData.age,
-			email: formData.email,
-			phone: formData.phone,
-			role: formData.role,
-		};
+		const formDataToSend = new FormData();
 
-		// Add password fields if changed
-		if (showPasswordFields) {
-			dataToSend.password = formData.newPassword;
-		}
-
-		// Add role-specific data
-		if (formData.role === 'student') {
-			dataToSend.education = formData.education;
-		} else if (formData.role === 'professional') {
-			dataToSend.workExperience = formData.workExperience;
-		} else if (formData.role === 'startup') {
-			dataToSend.startupDetails = formData.startupDetails;
-		}
+		Object.keys(formData).forEach((key) => {
+			if (key === 'profilePhoto' && formData[key]) {
+				formDataToSend.append('profilePhoto', formData[key]);
+			} else if (typeof formData[key] === 'object') {
+				formDataToSend.append(key, JSON.stringify(formData[key]));
+			} else {
+				formDataToSend.append(key, formData[key]);
+			}
+		});
 
 		try {
 			const response = await fetch(
@@ -179,9 +167,9 @@ const Dashboard = () => {
 					method: 'PATCH',
 					headers: {
 						Authorization: `Bearer ${token}`,
-						'Content-Type': 'application/json',
+						'Content-Type': 'multipart/form-data',
 					},
-					body: JSON.stringify(dataToSend),
+					body: formDataToSend,
 				}
 			);
 
@@ -211,13 +199,13 @@ const Dashboard = () => {
 			<div className="profile-header">
 				<div className="profile-pic-container">
 					<input
-						ref={profilePicInput} // Use ref={profilePicInput} instead of ref={(input) => {profilePicInput = input;}}
+						ref={profilePhotoInput} // Use ref={profilePhotoInput} instead of ref={(input) => {profilePhotoInput = input;}}
 						type="file"
 						accept="image/*"
 						onChange={(e) =>
 							handleChange({
 								target: {
-									name: 'profilePic',
+									name: 'profilePhoto',
 									value: e.target.files[0],
 								},
 							})
@@ -226,15 +214,15 @@ const Dashboard = () => {
 					/>
 					<img
 						src={
-							formData.profilePic
-								? URL.createObjectURL(formData.profilePic)
-								: user?.profilePic || '/default-avatar.svg'
+							formData.profilePhoto
+								? URL.createObjectURL(formData.profilePhoto)
+								: user?.profilePhoto || '/default-avatar.svg'
 						}
 						alt="Profile"
 						className="profile-pic"
 						height={100}
 						width={100}
-						onClick={() => profilePicInput.current?.click()} // Use .current to access the DOM element
+						onClick={() => profilePhotoInput.current?.click()} // Use .current to access the DOM element
 					/>{' '}
 				</div>
 				<h1>
