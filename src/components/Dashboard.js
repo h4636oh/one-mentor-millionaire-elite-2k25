@@ -150,15 +150,28 @@ const Dashboard = () => {
 
 		const formDataToSend = new FormData();
 
-		Object.keys(formData).forEach((key) => {
-			if (key === 'profilePhoto' && formData[key]) {
-				formDataToSend.append('profilePhoto', formData[key]);
-			} else if (typeof formData[key] === 'object') {
-				formDataToSend.append(key, JSON.stringify(formData[key]));
-			} else {
-				formDataToSend.append(key, formData[key]);
-			}
-		});
+		formDataToSend.append('firstName', formData.firstName);
+		formDataToSend.append('lastName', formData.lastName);
+		formDataToSend.append('age', formData.age);
+		formDataToSend.append('email', formData.email);
+		formDataToSend.append('phone', formData.phone);
+		formDataToSend.append('role', formData.role);
+
+		if (formData.newPassword) {
+			formDataToSend.append('password', formData.newPassword);
+		}
+		
+		if (formData.profilePhoto) {
+			formDataToSend.append('profilePhoto', formData.profilePhoto);
+		}
+
+		if (formData.role === 'student') {
+			formDataToSend.append('education', JSON.stringify(formData.education));
+		} else if (formData.role === 'professional') {
+			formDataToSend.append('workExperience', JSON.stringify(formData.workExperience));
+		} else if (formData.role === 'startup') {
+			formDataToSend.append('startupDetails', JSON.stringify(formData.startupDetails));
+		}
 
 		try {
 			const response = await fetch(
@@ -167,7 +180,6 @@ const Dashboard = () => {
 					method: 'PATCH',
 					headers: {
 						Authorization: `Bearer ${token}`,
-						'Content-Type': 'multipart/form-data',
 					},
 					body: formDataToSend,
 				}
