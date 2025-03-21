@@ -12,9 +12,12 @@ import TTMM from './components/TTMM';
 import AuthForm from './components/AuthForm';
 import Dashboard from './components/Dashboard';
 import GalaNight from './components/GalaNight';
+import ContactUs from './components/ContactUs';
 import './styles/Common.css';
 
 const App = () => {
+	console.log('App component rendering...'); // Debug log
+	
 	return (
 		<Router>
 			<Routes>
@@ -23,6 +26,7 @@ const App = () => {
 				<Route path="/login" element={<AuthForm />} />
 				<Route path="/dashboard" element={<Dashboard />} />
 				<Route path="/galanight" element={<GalaNight />} />
+				<Route path="/contact" element={<ContactUs />} />
 				<Route path="/" element={
 					<div style={{ backgroundColor: '#010624' }}>
 						<LandingPageHome />
