@@ -1,0 +1,118 @@
+.sponsors-section {
+  background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2f 100%);
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsors-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sponsors-title {
+  font-size: 64px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  background: linear-gradient(45deg, #9DE8EE 20%, #FA7C0B 60%, #9F8CED 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sponsors-message {
+  font-size: 20px;
+  color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto 48px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.sponsors-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  margin-bottom: 48px;
+}
+
+.sponsor-category {
+  width: 100%;
+}
+
+.category-title {
+  font-size: 32px;
+  color: #ffffff;
+  /* margin-top: 2rem;  */
+}
+
+.category-title::after {
+  content: '';
+  width: 60px;
+  background: linear-gradient(90deg, #ff3366, #ff6b3d);
+}
+
+.sponsor-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.sponsor-logo {
+  border-radius: 12px;
+  padding: 24px 8px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  margin-bottom: 48px;
+}
+
+.sponsor-logo:hover {
+  transform: translateY(-5px);
+}
+
+.sponsor-logo img {
+  max-height: 100px;
+  width: auto;
+  filter: brightness(0.95);
+}
+
+/* Specific category styles */
+.sponsor-category:first-child .sponsor-logo img {
+  height: 120px; /* Larger size for title sponsor */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sponsors-title {
+    font-size: 40px;
+  }
+
+  .sponsors-message {
+    font-size: 16px;
+    padding: 0 16px;
+  }
+
+  .category-title {
+    font-size: 20px;
+  }
+  
+  .sponsor-logo {
+    padding: 8px -4px;
+    margin-bottom: 0px;
+  }
+
+  .sponsor-logo img {
+    height: 60px;
+  }
+
+  .sponsor-category:first-child .sponsor-logo img {
+    height: 80px;
+  }
+} 

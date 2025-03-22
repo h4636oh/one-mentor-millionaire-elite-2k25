@@ -3,11 +3,15 @@
     margin: 0px 0px;
     padding: 40px;
     padding-top: 0px;
+    background: linear-gradient(90deg, #391f46, #573f6d);
+    width: 100%;
 }
 
 .gala-ticket-section h2 {
     font-size: 2rem;
     margin-bottom: 30px;
+    color: #ffffff;
+    margin-top: 2rem;   
 }
 
 .gala-ticket-image {
