@@ -15,11 +15,10 @@ import GalaNight from './components/GalaNight';
 import ContactUs from './components/ContactUs';
 import Sponsors from './components/Sponsors';
 import Influencers from './components/Influencers';
+import Investment from './components/Investment';
 import './styles/Common.css';
 
-const App = () => {
-	console.log('App component rendering...'); // Debug log
-	
+const App = () => {	
 	return (
 		<Router>
 			<Routes>
@@ -31,6 +30,7 @@ const App = () => {
 				<Route path="/contact" element={<ContactUs />} />
 				<Route path="/sponsors" element={<Sponsors />} />
 				<Route path="/influencers" element={<Influencers />} />
+				<Route path='/investment' element={<Investment />} />
 				<Route path="/" element={
 					<div style={{ backgroundColor: '#010624' }}>
 						<LandingPageHome />
