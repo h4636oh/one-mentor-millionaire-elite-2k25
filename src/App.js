@@ -14,6 +14,7 @@ import Dashboard from './components/Dashboard';
 import GalaNight from './components/GalaNight';
 import ContactUs from './components/ContactUs';
 import Sponsors from './components/Sponsors';
+import Influencers from './components/Influencers';
 import './styles/Common.css';
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
 				<Route path="/galanight" element={<GalaNight />} />
 				<Route path="/contact" element={<ContactUs />} />
 				<Route path="/sponsors" element={<Sponsors />} />
+				<Route path="/influencers" element={<Influencers />} />
 				<Route path="/" element={
 					<div style={{ backgroundColor: '#010624' }}>
 						<LandingPageHome />

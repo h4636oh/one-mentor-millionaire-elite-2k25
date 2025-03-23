@@ -1,0 +1,77 @@
+.elite-influencers-container {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #110f0f;
+    color: white;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.elite-influencers-container h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.elite-influencers-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.influencers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 40px;
+    min-width: 50vw;
+    max-width: 80vw;
+}
+
+.influencer-card {
+    background-color: #1d1a1a;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: transform 0.3s;
+}
+
+.influencer-card:hover {
+    transform: scale(1.05);
+}
+
+.influencer-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.influencer-card h2 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.influencer-card p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .influencers-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .elite-influencers-container h1 {
+        font-size: 36px;
+    }
+
+    .influencer-card h2 {
+        font-size: 16px;
+    }
+
+    .influencer-card p {
+        font-size: 14px;
+    }
+}
