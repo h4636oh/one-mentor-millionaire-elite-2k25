@@ -39,10 +39,21 @@ const Investment = () => {
 		'Approval time ranges between 24 to 48 hours.',
 		'Returns will be credited only on the day of the event.',
 		'Returns are post-tax and after transaction fees.',
-		'Capital allocation is final upon approval — no changes allowed.',
-		'Refunds will not be processed after approval.',
-		'Millionaire Elite 25 reserves the right to accept or reject any investment request.',
-		'Investor details must be accurate and verified.',
+		'Capital allocation is final upon approval — no changes allowed.  ',
+		'Refunds will not be processed after approval.  ',
+		'Millionaire Elite 25 reserves the right to accept or reject any investment request.  ',
+		'Investor details must be accurate and verified.  ',
+		'Participation confirms acceptance of these terms.  ',
+		'Capital allocation is based on revenue strategy and project performance.  ',
+		'Returns are subject to market performance and capital contribution.  ',
+		'Valid ID proof is mandatory for all investors.  ',
+		'Payments must be processed through approved channels only.  ',
+		'Disputes will be resolved under Mumbai jurisdiction.  ',
+		'Confidentiality of investor details must be maintained.  ',
+		'Event day credits will be processed within 24 hours post-event.  ',
+		'Investments are non-transferable.  ',
+		'Millionaire Elite 25 holds no liability for external market influences affecting returns.  ',
+		'Changes to terms and conditions will be communicated in advance.',
 	];
 
 	return (
@@ -167,7 +178,10 @@ const Investment = () => {
 				<div className="terms-card">
 					<h1 className="terms-heading">Terms and Conditions</h1>
 					<div className="terms-content">
-						<ol className="terms-list">
+						<ol
+							className="terms-list"
+							style={{ maxHeight: '300px', overflow: 'auto' }}
+						>
 							{terms.map((term, index) => (
 								<li key={index} className="term-item">
 									{term}
